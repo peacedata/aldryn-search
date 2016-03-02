@@ -17,7 +17,7 @@ class AldrynSearchView(FormMixin, ListView):
 
     # A list of models to limit search by.
     # Only indexes registered to these models will be searched.
-    models = None
+    models = getattr(settings, 'ALDRYN_SEARCH_MODELS', None)
 
     load_all = False
 
