@@ -9,7 +9,8 @@ except ImportError:
     from django.utils.encoding import force_text as force_unicode
 
 from cms.toolbar.toolbar import CMSToolbar
-from cms.utils.compat import DJANGO_1_8, DJANGO_1_9
+
+from aldryn_common.compat import DJANGO_1_7
 
 from .conf import settings
 from .utils import get_field_value, strip_tags
@@ -49,7 +50,7 @@ def get_plugin_index_data(base_plugin, request):
     if search_contents:
         context = RequestContext(request)
 
-        if DJANGO_1_8 or DJANGO_1_9:
+        if not DJANGO_1_7:
             from django.template import Engine
             # On Django <= 1.7, the RequestContext class would call
             # all context processors and update the context on initialization.
